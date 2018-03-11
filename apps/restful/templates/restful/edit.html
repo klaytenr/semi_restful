@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'restful/css/edit.css' %}">
+</head>
+<body>
+    {% for name in current %}
+        <h1>Edit user {{name.id}}</h1>
+        <form action="/users/{{name.id}}/update" method="post">
+            {% csrf_token %}
+            First Name: <input type="text" value="{{name.first_name}}" name="first_name"><br>
+            Last Name: <input type="text" value="{{name.last_name}}" name="last_name"><br>
+            Email: <input type="text" value="{{name.email}}" name="email"><br>
+            <input type="submit" value="Update">
+        </form><br>
+        <a href="http://localhost:8000/users/{{name.id}}">Show</a>
+        <a href="http://localhost:8000/users/">Go Back</a>
+    {% endfor %}
+</body>
+</html>

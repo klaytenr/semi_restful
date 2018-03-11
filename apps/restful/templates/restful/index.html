@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'restful/css/style.css' %}">
+</head>
+<body>
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            {% for name in full_name %}
+                <tr>
+                    <td>{{name.id}}</td>
+                    <td>{{name.first_name}} {{name.last_name}}</td>
+                    <td>{{name.email}}</td>
+                    <td>{{name.created_at}}</td>
+                    <td><a href="http://localhost:8000/users/{{name.id}}">Show</a> <a href="http://localhost:8000/users/{{name.id}}/edit">Edit</a> <a href="http://localhost:8000/users/{{name.id}}/delete">Delete</a> </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="http://localhost:8000/users/new">Add a new user</a>
+</body>
+</html>

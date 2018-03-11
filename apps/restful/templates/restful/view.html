@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'restful/css/views.css' %}">
+</head>
+<body>
+    {% for name in full_name %}
+        <h1>User {{name.id}}</h1>
+        <p>Full Name: {{name.first_name}} {{name.last_name}}</p>
+        <p>Email: {{name.email}}</p>
+        <p>Created at: {{name.created_at}}</p>
+        <form action="/{{name.id}}/edit" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Edit">
+        </form> 
+        <p id="line">|</p>
+        <form action="/{{name.id}}/delete" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Delete">
+        </form>
+    {% endfor %}
+</body>
+</html>

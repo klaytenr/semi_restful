@@ -1,0 +1,7 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+table, tr{
+    border: 1px blue solid;
+}
